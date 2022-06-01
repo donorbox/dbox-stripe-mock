@@ -441,7 +441,7 @@
         "tax_id": null
       },
       "calculated_statement_descriptor": null,
-      "captured": false,
+      "captured": true,
       "created": 1234567890,
       "currency": "usd",
       "customer": null,
@@ -527,7 +527,7 @@
       "source_transfer": null,
       "statement_descriptor": null,
       "statement_descriptor_suffix": null,
-      "status": "succeeded",
+      "status": "paid",
       "transfer_data": {
         "amount": null,
         "destination": {

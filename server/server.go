@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"net/url"
 	"path/filepath"
@@ -229,6 +230,12 @@ func NewStubServer(fixtures *spec.Fixtures, spec *spec.Spec, strictVersionCheck,
 func (s *StubServer) HandleRequest(w http.ResponseWriter, r *http.Request) {
 	start := time.Now()
 	fmt.Printf("Request: %v %v\n", r.Method, r.URL.Path)
+
+	//random delay to emulate stripe production behaviour
+	min := 0.5
+	max := 1.5
+	randomFloat := min + rand.Float64()*(max-min)
+	time.Sleep(time.Duration(randomFloat * float64(time.Second)))
 
 	//
 	// Validate headers

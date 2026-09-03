@@ -1,0 +1,16 @@
+[tools]
+go = "1.27.1"
+"aqua:dominikh/go-tools/staticcheck" = "2026.2.1"
+
+[env]
+GOTOOLCHAIN = "local"   # keeps Go from auto-downloading another toolchain
+
+[tasks.build]
+run = "go build -mod=vendor -o stripe-mock"
+
+[tasks.test]
+run = "go test ./... -count=1"
+
+[tasks.serve]
+depends = ["build"]
+run = "./stripe-mock -http-port 12111 -https-port 12112"
